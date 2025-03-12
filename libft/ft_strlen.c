@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_data.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 19:45:37 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/04 17:49:37 by didimitr         ###   ########.fr       */
+/*   Created: 2024/10/27 02:09:46 by adimik            #+#    #+#             */
+/*   Updated: 2024/11/05 13:23:57 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static t_stack	stack;
-
-t_stack	*get_stack(void)
+size_t	ft_strlen(const char *str)
 {
-	return(&stack);
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

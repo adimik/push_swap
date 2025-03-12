@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_data.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 19:45:37 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/04 17:49:37 by didimitr         ###   ########.fr       */
+/*   Created: 2024/11/05 13:37:42 by didimitr          #+#    #+#             */
+/*   Updated: 2024/11/05 14:44:52 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static t_stack	stack;
-
-t_stack	*get_stack(void)
+void	ft_putstr_fd(char *s, int fd)
 {
-	return(&stack);
+	size_t	i;
+
+	i = 0;
+	if (!s || !fd)
+		return ;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

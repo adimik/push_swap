@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_data.c                                         :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 19:45:37 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/04 17:49:37 by didimitr         ###   ########.fr       */
+/*   Created: 2024/11/05 13:38:18 by didimitr          #+#    #+#             */
+/*   Updated: 2024/11/05 14:44:29 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static t_stack	stack;
-
-t_stack	*get_stack(void)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	return(&stack);
+	unsigned int	i;
+
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

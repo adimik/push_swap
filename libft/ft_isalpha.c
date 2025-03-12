@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_data.c                                         :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 19:45:37 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/04 17:49:37 by didimitr         ###   ########.fr       */
+/*   Created: 2024/11/05 13:36:07 by didimitr          #+#    #+#             */
+/*   Updated: 2024/11/05 13:36:11 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static t_stack	stack;
-
-t_stack	*get_stack(void)
+int	ft_isalpha(int c)
 {
-	return(&stack);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
 }
