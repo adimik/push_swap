@@ -6,7 +6,7 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:15:02 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/18 17:34:07 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/03/23 15:13:11 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ra(t_stack *list)
 		list = list->next;
 		next = next->next;
 	}
-	write(1, "pb\n", 3);
+	write(1, "ra\n", 3);
 }
 void	rb(t_stack *list)
 {

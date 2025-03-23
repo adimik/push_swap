@@ -6,13 +6,13 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:38:38 by didimitr          #+#    #+#             */
-/*   Updated: 2025/01/07 11:38:39 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:34:28 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*ft_substr(char const *s, int start, size_t len)
+char	*ft_substr2(char const *s, int start, size_t len)
 {
 	char	*sub;
 	size_t	j;
@@ -23,7 +23,7 @@ char	*ft_substr(char const *s, int start, size_t len)
 	if (!sub)
 		return (NULL);
 	j = 0;
-	if (start < ft_strlen((char *)s))
+	if (start < ft_strlen2((char *)s))
 	{
 		while (j < len && s[start])
 			sub[j++] = s[start++];
@@ -32,7 +32,7 @@ char	*ft_substr(char const *s, int start, size_t len)
 	return (sub);
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen2(char *str)
 {
 	int	l;
 
@@ -44,7 +44,7 @@ int	ft_strlen(char *str)
 	return (l);
 }
 
-int	ft_strchr(const char *s, int c, int out)
+int	ft_strchr2(const char *s, int c, int out)
 {
 	int	i;
 
@@ -62,12 +62,12 @@ int	ft_strchr(const char *s, int c, int out)
 	return (0);
 }
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup2(char *s1)
 {
 	char	*p;
 	int		i;
 
-	p = malloc(ft_strlen((char *)s1) + 1);
+	p = malloc(ft_strlen2((char *)s1) + 1);
 	if (!p)
 		return (NULL);
 	i = 0;
@@ -80,7 +80,7 @@ char	*ft_strdup(char *s1)
 	return (p);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin2(char *s1, char *s2)
 {
 	char	*join;
 	int		i;
@@ -89,7 +89,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	i = 0;
-	len = ft_strlen(s1) + ft_strlen(s2);
+	len = ft_strlen2(s1) + ft_strlen2(s2);
 	join = malloc(len + 1);
 	if (!join)
 		return (NULL);

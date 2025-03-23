@@ -6,7 +6,7 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:02:45 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/18 17:35:21 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:17:57 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,27 @@ int get_max_bits(t_stack *stack)
     return bits;
 }
 
-// Radix sort pomocí bitového třídění
 void radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
     int size = list_len(*stack_a);
     int max_bits = get_max_bits(*stack_a);
-    int i, j;
-    
-    for (i = 0; i < max_bits; i++) // Iterujeme přes jednotlivé bity
+    int i = 0;
+    int j;
+
+    while (i < max_bits)
     {
         j = 0;
         while (j < size)
         {
-            if ((((*stack_a)->index >> i) & 1) == 0) // Kontrola i-tého bitu
-                pb(stack_a, stack_b); // Pokud je 0, pushujeme do stack_b
+            if ((((*stack_a)->index >> i) & 1) == 0)
+                pb(stack_a, stack_b);
             else
-                ra(*stack_a); // Pokud je 1, rotujeme v stack_a
+                ra(stack_a); // opraveno z ra(*stack_a)
             j++;
         }
-        while (*stack_b) // Vracíme čísla zpět do stack_a
+        while (*stack_b)
             pa(stack_a, stack_b);
+        i++;
     }
 }
 t_stack *find_min(t_stack *list)

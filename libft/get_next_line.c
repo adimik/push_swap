@@ -6,11 +6,11 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:37:48 by adimik            #+#    #+#             */
-/*   Updated: 2025/01/07 11:38:29 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:34:33 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*put_nl(char **st, int fd)
 {
@@ -20,11 +20,11 @@ static char	*put_nl(char **st, int fd)
 
 	if (st[fd] == NULL)
 		return (NULL);
-	i = ft_strchr(st[fd], '\n', 1);
-	nl = ft_substr(st[fd], 0, i);
+	i = ft_strchr2(st[fd], '\n', 1);
+	nl = ft_substr2(st[fd], 0, i);
 	if (st[fd][i] != '\0')
 	{
-		t = ft_strdup(&st[fd][i]);
+		t = ft_strdup2(&st[fd][i]);
 		free(st[fd]);
 		st[fd] = t;
 		if (st[fd][0] == '\0')
@@ -51,13 +51,13 @@ static char	*update_st(char *buf, int fd, int size)
 		buf[size] = '\0';
 		if (st[fd] != NULL)
 		{
-			t = ft_strjoin(st[fd], buf);
+			t = ft_strjoin2(st[fd], buf);
 			free(st[fd]);
 			st[fd] = t;
 		}
 		else
-			st[fd] = ft_strdup(buf);
-		if (ft_strchr(st[fd], '\n', 0) != 0)
+			st[fd] = ft_strdup2(buf);
+		if (ft_strchr2(st[fd], '\n', 0) != 0)
 			break ;
 		size = read(fd, buf, BUFFER_SIZE);
 	}
