@@ -6,6 +6,7 @@
 
 typedef struct s_stack
 {
+    int index;
     int num;
     struct s_stack *next;
 }t_stack;
@@ -21,6 +22,19 @@ t_stack *ft_splitll(char *arr);
 void	ft_swap(t_stack *a, t_stack *b);
 void	sa(t_stack *list);
 void	ra(t_stack *list);
-void	rra(t_stack *list);
+void	rra(t_stack **list);
+void	rrb(t_stack **list);
+void	pa(t_stack **list_a, t_stack **list_b);
+void	pb(t_stack **list_a, t_stack **list_b);
+void	list_free(t_stack *list);
+void	rrr(t_stack **list_a, t_stack **list_b);
+
+
+void    sort(t_stack *list_a, t_stack *list_b);
+void radix_sort(t_stack **stack_a, t_stack **stack_b);
+int get_max_bits(t_stack *stack);
+int     list_len(t_stack *list);
+void    add_index(t_stack *list);
+t_stack *find_min(t_stack *list);
 
 #endif

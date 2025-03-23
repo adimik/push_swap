@@ -6,7 +6,7 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:15:02 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/11 18:06:43 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:34:07 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ra(t_stack *list)
 		list = list->next;
 		next = next->next;
 	}
+	write(1, "pb\n", 3);
 }
 void	rb(t_stack *list)
 {
@@ -72,16 +73,57 @@ void	rr(t_stack *list_a, t_stack *list_b)
 	ra(list_a);
 	rb(list_b);
 }
-void	rra(t_stack *list)
+void	rra(t_stack **list)
 {
     t_stack	*tmp;
     t_stack	*last;
 
-    tmp = list;
+    tmp = *list;
+
     while (tmp->next->next)
         tmp = tmp->next;
     last = tmp->next;
+    last->next = *list;
+    *list = last;
     tmp->next = NULL;
-    last->next = list;
-    list = last;
+}
+void	rrb(t_stack **list)
+{
+	t_stack *tmp;
+	t_stack *last;
+
+	tmp = *list;
+
+	while (tmp->next->next)
+	tmp = tmp->next;
+	last = tmp->next;
+	last->next = *list;
+	*list = last;
+	tmp->next = NULL;
+}
+void	rrr(t_stack **list_a, t_stack **list_b)
+{
+	rra(list_a);
+	rrb(list_b);
+}
+
+void	pb(t_stack **list_a, t_stack **list_b)
+{
+	t_stack *tmp;
+
+	tmp = *list_a;
+	*list_a = (*list_a)->next;
+	tmp->next = *list_b;
+	*list_b = tmp;
+	write(1, "pb\n", 3);
+}
+void	pa(t_stack **list_a, t_stack **list_b)
+{
+	t_stack *tmp;
+
+	tmp = *list_b;
+	*list_b = (*list_b)->next;
+	tmp->next = *list_a;
+	*list_a = tmp;
+	write(1, "pa\n", 3);
 }

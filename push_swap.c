@@ -6,7 +6,7 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 19:12:29 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/11 17:40:00 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:43:12 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ t_stack *ft_splitll(char *arr)
 int	main(int argc, char **argv)
 {
 	t_stack *stack_a;
+	t_stack *stack_b;
+
+	stack_b = NULL;
 	if(argc == 2)
 	{
 		stack_a = ft_splitll(argv[1]);
@@ -95,11 +98,8 @@ int	main(int argc, char **argv)
 		stack_a = ll_get(argc, argv, 1);
 	if(stack_a == NULL)
 		return(write(2, "Error\n", 6));
-    rra(stack_a);
-	while (stack_a)
-    {
-        printf("%d\n", stack_a->num);
-        stack_a = stack_a->next;
-    }
+	sort(stack_a, stack_b);
+	list_free(stack_a);
+	list_free(stack_b);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:39:56 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/11 13:25:52 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:33:10 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,15 @@ long long	ft_atol(char *str)
 	}
 	res = res * sign;
 	return(res);
+}
+void	list_free(t_stack *list)
+{
+	t_stack *tmp;
+
+	while (list)
+	{
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
 }
