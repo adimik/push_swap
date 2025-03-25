@@ -36,5 +36,7 @@ int get_max_bits(t_stack *stack);
 int     list_len(t_stack *list);
 void    add_index(t_stack *list);
 t_stack *find_min(t_stack *list);
-
+void    sort_3(t_stack **stack);
+void    sort_4(t_stack **stack_a, t_stack **stack_b);
+int get_min_pos(t_stack *stack);
 #endif

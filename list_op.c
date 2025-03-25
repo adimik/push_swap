@@ -6,7 +6,7 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:15:02 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/23 15:13:11 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:35:48 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	sa(t_stack *list)
 
 	next = list->next;
 	ft_swap(list, next);
+	write(1, "sa\n", 3);
 }
 void	sb(t_stack *list)
 {
@@ -86,6 +87,7 @@ void	rra(t_stack **list)
     last->next = *list;
     *list = last;
     tmp->next = NULL;
+	write(1, "rra\n", 4);
 }
 void	rrb(t_stack **list)
 {

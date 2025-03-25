@@ -6,7 +6,7 @@
 /*   By: didimitr <didimitr@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:02:45 by didimitr          #+#    #+#             */
-/*   Updated: 2025/03/23 16:17:57 by didimitr         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:52:37 by didimitr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int     list_len(t_stack *list)
 }
 int get_max_bits(t_stack *stack)
 {
-    int max = list_len(stack) - 1; // Největší index
+    int max = list_len(stack) - 1;
     int bits = 0;
-    while (max >> bits) // Počet bitů potřebných k reprezentaci max indexu
+    while (max >> bits)
         bits++;
     return bits;
 }
@@ -47,7 +47,7 @@ void radix_sort(t_stack **stack_a, t_stack **stack_b)
             if ((((*stack_a)->index >> i) & 1) == 0)
                 pb(stack_a, stack_b);
             else
-                ra(stack_a); // opraveno z ra(*stack_a)
+                ra(*stack_a);
             j++;
         }
         while (*stack_b)
@@ -92,16 +92,95 @@ void    add_index(t_stack *list)
         min_node->index = index++;
     }
 }
+int sorted(t_stack *stack)
+{
+    while(stack)
+    {
+        if(stack->next && stack->num > stack->next->num)
+            return(0);
+        stack = stack->next;
+    }
+    return(1);
+}
+void    small_sort(t_stack **stack_a, t_stack **stack_b, int len)
+{
+    if(len == 3)
+        sort_3(stack_a);
+    if(len == 4)
+        sort_4(stack_a, stack_b);
+}
+int get_min_pos(t_stack *stack)
+{
+    int i;
+
+    i = 0;
+    while(stack)
+    {
+        if(stack->index == 0)
+            return(i);
+        i++;
+        stack = stack->next;
+    }
+    return(i);
+}
+
+void    sort_4(t_stack **stack_a, t_stack **stack_b)
+{
+    int min_pos;
+
+    min_pos = get_min_pos(*stack_a);
+
+    if(min_pos == 1)
+        sa(*stack_a);
+    else if(min_pos == 2)
+        ra(*stack_a);
+    else if(min_pos == 3)
+        rra(stack_a);
+    pb(stack_a, stack_b);
+    sort_3(stack_a);
+    pa(stack_a, stack_b);
+}
+
+void    sort_3(t_stack **stack)
+{
+    int a;
+    int b;
+    int c;
+
+    a = (*stack)->num;
+    b = (*stack)->next->num;
+    c = (*stack)->next->next->num;
+    if(a > b && b < c && c > a)
+        sa(*stack);
+    else if (a > b && b > c)
+    {
+        ra(*stack);
+        sa(*stack);
+    }
+    else if (a > b && b < c)
+        ra(*stack);
+    else if (a < b && b > c && a < c)
+    {
+        sa(*stack);
+        ra(*stack);
+    }
+    else if (a < b && b > c && a > c)
+        rra(stack);
+}
 
 void    sort(t_stack *list_a, t_stack *list_b)
 {
     t_stack *stack_a;
     t_stack *stack_b;
+    int i;
 
     stack_a = list_a;
     stack_b = list_b;
+    i = list_len(stack_a);
     add_index(stack_a);
-    //if(list_len(stack_a) <= 6)
-    //    small_sort(stack_a);
-    radix_sort(&stack_a, &stack_b);
+    if(sorted(stack_a))
+        return;
+    if(i < 6)
+        small_sort(&stack_a, &stack_b, i);
+    else radix_sort(&stack_a, &stack_b);
 }
